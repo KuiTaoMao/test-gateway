@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ars.testgateway.core.repository.StudentMapper">
+    <resultMap id="BaseResultMap" type="com.ars.testgateway.core.repository.entity.StudentDo">
+
+        <id column="_id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="sex" jdbcType="VARCHAR" property="sex"/>
+        <result column="birthday" jdbcType="VARCHAR" property="birthday"/>
+
+    </resultMap>
+
+    <sql id="table_name">tb_stu</sql>
+
+    <sql id="Base_Column_List">
+       _id,name,sex,birthday
+    </sql>
+
+    <select id="searchUserInfo" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from tb_stu
+    </select>
+
+</mapper>

@@ -1,0 +1,55 @@
+eureka:
+    client:
+        service-url:
+            defaultZone: http://ars:778899@172.20.17.58:7000/eureka
+server:
+    # https监听端口
+    port: 8006
+    custom:
+      # http监听端口
+        httpPort: 8000
+    ssl:
+        key-store: keystore.p12
+        key-store-password: 123456
+        key-store-type: PKCS12
+        key-alias: tomcat
+
+spring:
+    datasource:
+        driver_class_name: com.mysql.jdbc.Driver
+        name: master
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&useSSL=false
+        username: root
+        password: 123456
+        druid:
+            initial_size: 8
+            min_idle: 1
+            max_active: 20
+            max_wait: 60000
+            time_between_eviction_runsMillis: 60000
+            min_evictable_idle_timeMillis: 300000
+            validation_query: select 'x' FROM DUAL
+            test_while_idle: true
+            test_on_borrow: false
+            test_on_return: false
+            pool_prepared_statements: true
+            max_open_prepared_statements: 20
+            max_pool_prepared_statement_per_connection_size: 20
+            filters: stat
+redis:
+    host: 172.20.18.64
+    port: 6379
+    password: test
+    #最大空闲数，数据库连接的最大空闲时间。超过空闲时间，数据库连接将被标记为不可用，然后被释放。设为0表示无限制
+    maxIdle: 300
+    #连接池的最大数据库连接数。设为0表示无限制
+    maxTotal: 600
+    #最大建立连接等待时间(毫秒)。如果超过此时间将接到异常。设为-1表示无限制。
+    maxWait: 1000
+    #在borrow一个jedis实例时，是否提前进行alidate操作；如果为true，则得到的jedis实例均是可用的；
+    testOnBorrow: true
+    database: 0
+
+application:
+    sms.switch: false

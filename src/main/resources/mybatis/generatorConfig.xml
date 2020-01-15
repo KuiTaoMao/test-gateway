@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="Mysql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <property name="useMapperCommentGenerator" value="true"/>
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+            <property name="caseSensitive" value="true"/>
+            <property name="forceAnnotation" value="true"/>
+            <property name="generateColumnConsts" value="true"/>
+            <property name="generateDefaultInstanceMethod" value="true"/>
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
+            <!--使用Data注解时，Getter,Setter,ToString,EqualsAndHashCode注解无效-->
+            <!--<property name="lombok" value="Data,Accessors"/>-->
+            <property name="lombok" value="Data"/>
+            <property name="lombokEqualsAndHashCodeCallSuper" value="true"/>
+            <property name="swagger" value="false"/>
+        </plugin>
+
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/test"
+                        userId="root"
+                        password="123456"/>
+
+        <javaModelGenerator targetPackage="com.ars.testgateway.core.repository.entity"
+                            targetProject="E:\IdeaProjects\test-gateway\src\main\java"/>
+
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="E:\IdeaProjects\test-gateway\src\main\resources"/>
+
+        <javaClientGenerator targetPackage="com.ars.testgateway.core.repository"
+                             targetProject="E:\IdeaProjects\test-gateway\src\main\java" type="XMLMAPPER"/>
+
+
+        <table tableName="tb_stu" domainObjectName="StudentDo" mapperName="StudentMapper">
+            <generatedKey column="_id" sqlStatement="Mysql" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
